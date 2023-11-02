@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from "react";
-import Card from '../../Components/Card/card'
+import "./pokédex.scss";
+
+import Card from '../../Components/Card/card';
 
 export default function Pokédex() {
   const [pokemonList, setPokemonList] = useState([]);
@@ -20,8 +22,8 @@ export default function Pokédex() {
   
 
   return (
-    <div>
-      <h1>Liste de mes Pokémon</h1>
+    <div className="pokedex">
+      <h2>Liste de mes Pokémons</h2>
       <div className="cards">
       {pokemonList.map((pokemon, index) => (
         <Card
