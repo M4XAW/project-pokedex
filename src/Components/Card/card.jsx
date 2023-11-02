@@ -3,15 +3,11 @@ import "./card.scss";
 
 export default function Card(props) {
   const addToLocalStorage = (pokemonData) => {
-    const storedData = JSON.parse(localStorage.getItem("myPokemonList")) || [];
-
-    const isPokemonAlreadyAdded = storedData.some(
-      (pokemon) => pokemon.id === pokemonData.id
-    );
-
+    const pokemonId = pokemonData.id;
+    const isPokemonAlreadyAdded = localStorage.getItem(`${pokemonId}`);
+    
     if (!isPokemonAlreadyAdded) {
-      storedData.push(pokemonData);
-      localStorage.setItem("myPokemonList", JSON.stringify(storedData));
+      localStorage.setItem(`${pokemonId}`, JSON.stringify(pokemonData));
       alert("Pokémon ajouté avec succès !");
     } else {
       alert("Ce Pokémon est déjà dans votre liste.");
