@@ -63,6 +63,7 @@ export default function Pokédex() {
         <div className="buttons">
           <button onClick={sortPokemonById}>Trier par ID</button>
           <button onClick={sortPokemonByName}>Trier par nom</button>
+          <button onClick={sortPokemonByName}>Trier par type</button>
           <input
             type="text"
             placeholder="Rechercher"

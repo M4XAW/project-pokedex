@@ -10,7 +10,7 @@ export default function Home() {
   const [searchTerm, setSearchTerm] = useState("");
 
   useEffect(() => { // fetch data from API
-    fetch("https://pokeapi.co/api/v2/pokemon?limit=151", {
+    fetch("https://pokeapi.co/api/v2/pokemon?limit=1051", {
       method: "GET",
     })
       .then((response) => response.json())
