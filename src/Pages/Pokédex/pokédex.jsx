@@ -59,6 +59,7 @@ export default function Pokédex() {
   return (
     <div className="pokédex">
       {/* <Popup onClose={() => setShowPopup(false)} /> */}
+      
       <div className="container">
         <div className="title">
           <img src={Pokeball} alt="pokeball" />
