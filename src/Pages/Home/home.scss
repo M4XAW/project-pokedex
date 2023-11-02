@@ -12,7 +12,8 @@
     margin-bottom: 1vw;
 
     &:focus {
-      outline: 2px solid var(--dark-grey);
+      outline: none;
+      border: 0.15vw solid var(--dark-grey);
     }
   }
 
