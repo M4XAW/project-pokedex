@@ -1,10 +1,15 @@
 header {
+  position: sticky;
+  top: 0;
   display: flex;
   background-color: white;
   align-items: center;
   justify-content: space-between;
   height: 10vh;
+  width: 100%;
   padding: 0 1vw;
+  z-index: 1;
+  border-bottom: 2px solid var(--dark-grey);
 
   a {
     height: 100%;
