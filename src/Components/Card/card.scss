@@ -1,5 +1,5 @@
 .card {
-    position: relative;
+  position: relative;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -18,25 +18,48 @@
 
   .number {
     position: absolute;
-    font-size: 0.9vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 0.8vw;
+    width: 2vw;
+    aspect-ratio: 1/1;
+    background-color: var(--light-grey);
+    border-radius: var(--border-radius-04);
+    border: 2px solid var(--dark-grey);
   }
 
-  img {
-    width: 80%;
-    transition: transform 0.3s ease;
+  .cardContent {
+    .pokemonImage {
+      width: 80%;
+      transition: transform 0.3s ease;
+    }
+
+    .cardInfos {
+      .pokemonName {
+        font-size: 1.2vw;
+        font-weight: bold;
+        margin-bottom: 0.5vw;
+      }
+
+      .pokemonInfos {
+        font-size: 0.8vw;
+      }
+    }
   }
 
   .addButton {
     width: 100%;
     height: 2.6vw;
+    font-size: 0.8vw;
     background-color: var(--light-grey);
     border: 2px solid var(--dark-grey);
-    border-radius: 0.4vw;
+    border-radius: var(--border-radius-04);
     cursor: pointer;
     transition: all 0.3s ease;
 
     &:hover {
-      background-color: var(--dark-grey);
+      background-color: #46d671;
       color: var(--white);
     }
   }
