@@ -2,6 +2,8 @@ import React from "react";
 import { useEffect, useState } from "react";
 import "./home.scss";
 
+import Card from "../../Components/Card/card";
+
 export default function Home() {
   const [pokemon, setPokemon] = useState([]);
 
@@ -26,21 +28,7 @@ export default function Home() {
       <input type="text" placeholder="Rechercher" />
       <div className="cards">
         {pokemon.map((pokemon, index) => (
-          <div key={index} className="card">
-            <div className="cardImage">
-              <img src={pokemon.sprites.front_default} alt={pokemon.name} />
-            </div>
-            <div className="cardContent">
-              <p>N° {pokemon.id}</p>
-              <h2>{pokemon.name}</h2>
-              <p>{pokemon.height}</p>
-              <p>{pokemon.weight}</p>
-              <p>{pokemon.types[0].type.name}</p>
-              {pokemon.types[1] && <p>{pokemon.types[1].type.name}</p>}
-              {pokemon.types[2] && <p>{pokemon.types[2].type.name}</p>}
-            </div>
-            <button>Ajouter</button>
-          </div>
+          <Card index={index} id={pokemon.id} name={pokemon.name} height={pokemon.height} weight={pokemon.weight} type1={pokemon.types[0].type.name} type2={pokemon.types[1] && pokemon.types[1].type.name} type3={pokemon.types[2] && pokemon.types[2].type.name} />
         ))}
       </div>
     </main>

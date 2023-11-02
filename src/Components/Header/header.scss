@@ -1,22 +1,27 @@
-header{
-display: flex;
-background-color: white;
-align-items: center;
-justify-content: space-between;
-height: 65px;
-}
-.logo{
-    height: 100px;
-    width: auto;
-}
-ul{
+header {
+  display: flex;
+  background-color: white;
+  align-items: center;
+  justify-content: space-between;
+  height: 10vh;
+  padding: 0 1vw;
+
+  a {
+    height: 100%;
+    .logo {
+      height: 100%;
+    }
+  }
+
+  ul {
     display: flex;
     width: 300px;
     justify-content: space-around;
     list-style-type: none;
-    
-}
-a{
-    text-decoration: none;
-    color: black;
+
+    a {
+      text-decoration: none;
+      color: black;
+    }
+  }
 }

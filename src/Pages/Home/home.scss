@@ -2,13 +2,6 @@
   padding: 2vw;
   background-color: var(--light-grey);
 
-  .cards {
-    display: grid;
-    grid-template-columns: repeat(5, 1fr);
-    grid-auto-rows: 1fr;
-    gap: 1vw;
-  }
-
   input {
     width: 100%;
     height: 2.6vw;
@@ -17,18 +10,9 @@
     border-radius: 0.4vw;
     font-size: 1vw;
     margin-bottom: 1vw;
-  }
 
-  .card {
-    height: 30vw;
-    background-color: var(--white);
-    padding: var(--padding);
-    border-radius: 1vw;
-    border: 2px solid transparent;
-    transition: all 0.3s ease-in-out;
-
-    &:hover {
-      border-color: var(--dark-grey);
+    &:focus {
+      outline: 2px solid var(--dark-grey);
     }
   }
 }
