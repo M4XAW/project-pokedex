@@ -11,28 +11,31 @@ header {
   z-index: 1;
   border-bottom: 2px solid var(--dark-grey);
 
-  a {
+  .logoLink, .logo {
     height: 100%;
-    transition: all 0.3s ease;
-
-    &:hover {
-      word-spacing: 0.2vw;
-    }
-    
-    .logo {
-      height: 100%;
-    }
   }
 
   ul {
     display: flex;
-    width: 300px;
     justify-content: space-around;
+    align-items: center;
+    gap: 0.4vw;
     list-style-type: none;
 
     a {
       text-decoration: none;
       color: black;
+      font-size: 0.8vw;
+      font-weight: 500;
+      padding: 0.5vw 1vw;
+      border-radius: 0.3vw;
+      border: 2px solid transparent;
+      transition: all 0.3s ease;
+
+      &:hover {
+        background-color: var(--light-grey);
+        border: 2px solid var(--dark-grey);
+      }
     }
   }
 }

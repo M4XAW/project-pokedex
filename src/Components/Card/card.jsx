@@ -1,24 +1,27 @@
 import React from "react";
+import { useState } from "react";
 import "./card.scss";
+
 
 export default function Card(props) {
   const ls = localStorage;
+  const [isPokemonAdded, setIsPokemonAdded] = useState(ls.getItem(`${props.id}`));
+
   const addToLocalStorage = (pokemonData) => {
     const pokemonId = pokemonData.id;
-    const isPokemonAlreadyAdded = localStorage.getItem(`${pokemonId}`);
+    const isPokemonAlreadyAdded = ls.getItem(`${pokemonId}`);
+
     if (!isPokemonAlreadyAdded) {
-      localStorage.setItem(`${pokemonId}`, JSON.stringify(pokemonData));
-      alert("Pokémon ajouté avec succès !");
-    } else {
-      alert("Ce Pokémon est déjà dans votre liste.");
+      ls.setItem(`${pokemonId}`, JSON.stringify(pokemonData));
+      setIsPokemonAdded(true);
     }
   };
 
   const removeToLocalStorage = (pokemonId) => {
-    localStorage.removeItem(`${pokemonId}`);
-    alert("Pokémon supprimé avec succès !");
+    ls.removeItem(`${pokemonId}`);
+    setIsPokemonAdded(false);
     window.location.reload();
-  };
+  }
 
   return (
     <div key={props.index} className="card">
@@ -31,17 +34,26 @@ export default function Card(props) {
         />
         <div className="cardInfos">
           <h2 className="pokemonName">{props.name}</h2>
-          <p className="pokemonInfos">{props.height}</p>
-          <p className="pokemonInfos">{props.weight}</p>
-          <p className="pokemonInfos">{props.type1}</p>
+          <div className="types">
+            <div className={`type ${props.type1}`}>{props.type1}</div>
+            {props.type2 && (
+              <div className={`type ${props.type2}`}>{props.type2}</div>
+            )}
+            {props.type3 && (
+              <div className={`type ${props.type3}`}>{props.type3}</div>
+            )}
+          </div>
+          {/* <p className="pokemonInfos">{props.type1}</p>
           {props.type2 && <p className="pokemonInfos">{props.type2}</p>}
-          {props.type3 && <p className="pokemonInfos">{props.type3}</p>}
+          {props.type3 && <p className="pokemonInfos">{props.type3}</p>} */}
         </div>
       </div>
       {props.typeButton === "addButton" ? (
-        <button onClick={() => addToLocalStorage(props)}>Ajouter</button>
+        <button className="addButton" onClick={() => addToLocalStorage(props)}>
+          {isPokemonAdded ? '✔️' : 'Ajouter +'}
+        </button>
       ) : (
-        <button onClick={() => removeToLocalStorage(props.id)}>
+        <button className="removeButton" onClick={() => removeToLocalStorage(props.id)}>
           Supprimer
         </button>
       )}

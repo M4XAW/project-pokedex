@@ -8,16 +8,16 @@ export default function Home() {
   const [pokemon, setPokemon] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
 
-  useEffect(() => {
+  useEffect(() => { // fetch data from API
     fetch("https://pokeapi.co/api/v2/pokemon?limit=151", {
       method: "GET",
     })
       .then((response) => response.json())
       .then((data) => {
         const promises = data.results.map((pokemon) => fetch(pokemon.url));
-        Promise.all(promises)
+        Promise.all(promises) // fetch all the data
           .then((responses) =>
-            Promise.all(responses.map((response) => response.json()))
+            Promise.all(responses.map((response) => response.json())) // parse all the data
           )
           .then((pokemonData) => setPokemon(pokemonData))
           .catch((error) => console.error("Error:", error));
@@ -28,25 +28,27 @@ export default function Home() {
     pokemon.name.toLowerCase().includes(searchTerm.toLowerCase())
   );
 
-  const handleSearchChange = (event) => {
+  const handleSearchChange = (event) => { // Modify the state of the search bar
     setSearchTerm(event.target.value);
   };
 
   return (
     <main className="home">
-      <h2>Tous les Pokémons</h2>
-      <input
-        type="text"
-        placeholder="Rechercher"
-        value={searchTerm}
-        onChange={handleSearchChange}
-      />
+      <div className="container">
+        <h2>Tous les Pokémons</h2>
+        <input
+          type="text"
+          placeholder="Rechercher"
+          value={searchTerm}
+          onChange={handleSearchChange}
+        />
+      </div>
       <div className="cards">
         {searchTerm && !filteredPokemon.length && <p>Aucun résultat</p>}
 
         {filteredPokemon.map((pokemon, index) => (
           <Card
-            typeButton = "addButton"
+            typeButton="addButton"
             key={index}
             id={pokemon.id}
             name={pokemon.name}
@@ -61,7 +63,7 @@ export default function Home() {
         {!searchTerm &&
           pokemon.map((pokemon, index) => (
             <Card
-              typeButton = "addButton"
+              typeButton="addButton"
               key={index}
               id={pokemon.id}
               name={pokemon.name}

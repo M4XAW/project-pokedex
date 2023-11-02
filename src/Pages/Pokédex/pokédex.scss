@@ -1,16 +1,31 @@
-.pokédex{
+.pokédex {
     padding: 2vw;
-    background-color: var(--light-grey);
-}
-.filter{
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-between;
-}
-.btn{
-    width: 200px;
-    display: flex;
-    justify-content: space-between;
-    border: none;
+    min-height: 90vh;
+
+    h2 {
+        font-size: 1.6vw;
+    }
+
+    .filter {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 0.6vw;
+    
+        .buttons {
+            width: fit-content;
+            border: none;
+        }
+    }
+
+    .empty {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 78vh;
+
+        p {
+            font-size: 1vw;
+        }
+    }
 }
