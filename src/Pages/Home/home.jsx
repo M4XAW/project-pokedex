@@ -17,8 +17,8 @@ export default function Home() {
     <div>
         <h1>Home</h1>
         <h2>{pokemon.name}</h2>
-        <img src={pokemon.sprites.front_default} alt={pokemon.name} />
-        <img src={pokemon.sprites.front_shiny} alt={pokemon.name} />
+        {/* <img src={pokemon.sprites.front_default} alt={pokemon.name} />
+        <img src={pokemon.sprites.front_shiny} alt={pokemon.name} /> */}
         <h2>{pokemon.height}</h2>
         <h2>{pokemon.weight}</h2>
     </div>

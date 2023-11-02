@@ -10,7 +10,7 @@ function App() {
       <Header />
       <Routes>
         <Route path='/' element={<Home />} />
-        <Route path='/pokédex' element={<Home />} />
+        <Route path='/pokédex' />
       </Routes>
     </div>
   );
