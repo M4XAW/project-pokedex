@@ -5,7 +5,6 @@ export default function Card(props) {
   const addToLocalStorage = (pokemonData) => {
     const pokemonId = pokemonData.id;
     const isPokemonAlreadyAdded = localStorage.getItem(`${pokemonId}`);
-    
     if (!isPokemonAlreadyAdded) {
       localStorage.setItem(`${pokemonId}`, JSON.stringify(pokemonData));
       alert("Pokémon ajouté avec succès !");
