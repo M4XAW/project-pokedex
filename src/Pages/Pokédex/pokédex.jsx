@@ -1,13 +1,7 @@
-import React from "react";
+import React from 'react'
 
-export default function Pokédex() {
-  const ls = localStorage;
-
-  let pokédex = [];
-
+export default function pokédex() {
   return (
-    <main className="pokédex">
-      <h1>Pokédex</h1>
-    </main>
-  );
+    <div>pokédex</div>
+  )
 }

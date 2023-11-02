@@ -1,12 +1,13 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import "./header.scss";
-
+// import Logo from "../../assets/International_Pokémon_logo.svg.png"
+import Logo2 from "../../Assets/pokemon-logo-black-transparent.png"
 export default function Header() {
   return (
     <header>
       <Link to="/">
-        <h1>LOGO</h1>
+        <img src={Logo2} alt="" className="logo"/>
       </Link>
       <nav>
         <ul>
