@@ -2,19 +2,65 @@
     padding: 2vw;
     min-height: 90vh;
 
-    h2 {
-        font-size: 1.6vw;
-    }
-
-    .filter {
+    .container {
         display: flex;
         justify-content: space-between;
         align-items: center;
+        height: 2.4vw;
         margin-bottom: 0.6vw;
-    
+
+        .title {
+            display: flex;
+            align-items: center;
+            height: 100%;
+            gap: 0.5vw;
+
+            img {
+                height: 100%;
+            }
+
+            h2 {
+                font-size: 1.6vw;
+            }
+        }
+
         .buttons {
+            display: flex;
+            gap: 0.5vw;
+            height: 100%;
             width: fit-content;
             border: none;
+
+            button {
+                color: black;
+                font-size: 0.8vw;
+                font-weight: 500;
+                padding: 0.5vw 1vw;
+                border-radius: 0.3vw;
+                border: var(--border) solid var(--dark-grey);
+                transition: all 0.3s ease;
+
+                &:hover {
+                    background-color: var(--light-grey);
+                    border: var(--border) solid var(--dark-grey);
+                }
+            }
+
+            input {
+                height: 100%;
+                width: 25vw;
+                padding: 0 1vw;
+                border: 0.2vw solid var(--light-grey);
+                border-radius: var(--border-radius-04);
+                font-size: 1vw;
+                outline: none;
+                border: var(--border) solid var(--dark-grey);
+                transition: all 0.3s ease;
+
+                &:focus {
+                    border-color: var(--black);
+                }
+            }
         }
     }
 

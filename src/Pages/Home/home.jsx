@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import "./home.scss";
 
 import Card from "../../Components/Card/card";
+import Pokeball from "../../Assets/Images/pokéball.png";
 
 export default function Home() {
   const [pokemon, setPokemon] = useState([]);

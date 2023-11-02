@@ -7,7 +7,7 @@
   background-color: var(--white);
   padding: var(--padding);
   border-radius: 0.6vw;
-  border: 0.15vw solid var(--dark-grey);
+  border: var(--border) solid var(--dark-grey);
   transition: all 0.3s ease;
 
   &:hover {
@@ -26,7 +26,7 @@
     aspect-ratio: 1/1;
     background-color: var(--light-grey);
     border-radius: var(--border-radius-04);
-    border: 2px solid var(--dark-grey);
+    border: var(--border) solid var(--dark-grey);
     user-select: none;
   }
 
@@ -59,7 +59,7 @@
           background-color: var(--light-grey);
           padding: 0.1vw 0.5vw;
           border-radius: var(--border-radius-04);
-          border: 2px solid var(--dark-grey);
+          border: var(--border) solid var(--dark-grey);
 
           &::first-letter {
             text-transform: uppercase;
@@ -159,7 +159,7 @@
     height: 2.6vw;
     font-size: 0.8vw;
     background-color: var(--light-grey);
-    border: 2px solid var(--dark-grey);
+    border: var(--border) solid var(--dark-grey);
     border-radius: var(--border-radius-04);
     cursor: pointer;
     user-select: none;

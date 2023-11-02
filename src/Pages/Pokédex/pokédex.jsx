@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import "./pokédex.scss";
 
 import Card from "../../Components/Card/card";
+import Pokeball from "../../Assets/Images/pokéball.png";
 
 export default function Pokédex() {
   const [pokemonList, setPokemonList] = useState([]);
@@ -54,8 +55,11 @@ export default function Pokédex() {
 
   return (
     <div className="pokédex">
-      <div className="filter">
-        <h2>Mon pokédex</h2>
+      <div className="container">
+        <div className="title">
+          <img src={Pokeball} alt="pokeball" />
+          <h2>Mon pokédex</h2>
+        </div>
         <div className="buttons">
           <button onClick={sortPokemonById}>Trier par ID</button>
           <button onClick={sortPokemonByName}>Trier par nom</button>

@@ -9,7 +9,7 @@ header {
   width: 100%;
   padding: 0 1vw;
   z-index: 1;
-  border-bottom: 2px solid var(--dark-grey);
+  border-bottom: var(--border) solid var(--dark-grey);
 
   .logoLink, .logo {
     height: 100%;
@@ -29,12 +29,12 @@ header {
       font-weight: 500;
       padding: 0.5vw 1vw;
       border-radius: 0.3vw;
-      border: 2px solid transparent;
+      border: var(--border) solid transparent;
       transition: all 0.3s ease;
 
       &:hover {
         background-color: var(--light-grey);
-        border: 2px solid var(--dark-grey);
+        border: var(--border) solid var(--dark-grey);
       }
     }
   }
