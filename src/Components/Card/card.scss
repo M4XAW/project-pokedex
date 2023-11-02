@@ -1,19 +1,27 @@
-.cards {
-  display: grid;
-  grid-template-columns: repeat(5, 1fr);
-  grid-auto-rows: 1fr;
-  gap: 1vw;
+.card {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 25vw;
+  background-color: var(--white);
+  padding: var(--padding);
+  border-radius: 0.6vw;
+  border: 2px solid transparent;
+  transition: all 0.3s ease;
 
-  .card {
-    height: 25vw;
-    background-color: var(--white);
-    padding: var(--padding);
-    border-radius: 1vw;
-    border: 2px solid transparent;
-    transition: all 0.3s ease;
+  &:hover {
+    border-color: var(--dark-grey);
+  }
 
-    &:hover {
-      border-color: var(--dark-grey);
-    }
+  img {
+    width: 55%;
+  }
+
+  .addButton {
+    width: 100%;
+    height: 2.6vw;
+    background-color: var(--light-grey);
+    border: 2px solid var(--dark-grey);
+    border-radius: 0.4vw;
   }
 }
