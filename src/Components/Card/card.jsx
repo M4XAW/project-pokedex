@@ -2,10 +2,12 @@ import React from "react";
 import { useState } from "react";
 import "./card.scss";
 
+import Popup from "../PopUp/popup";
 
 export default function Card(props) {
   const ls = localStorage;
   const [isPokemonAdded, setIsPokemonAdded] = useState(ls.getItem(`${props.id}`));
+  const [showPopup, setShowPopup] = useState(false);
 
   const addToLocalStorage = (pokemonData) => {
     const pokemonId = pokemonData.id;
@@ -17,7 +19,7 @@ export default function Card(props) {
     }
   };
 
-  const removeToLocalStorage = (pokemonId) => {
+  const removeToLocalStorage = (pokemonId) => {    
     ls.removeItem(`${pokemonId}`);
     setIsPokemonAdded(false);
     window.location.reload();
@@ -43,9 +45,6 @@ export default function Card(props) {
               <div className={`type ${props.type3}`}>{props.type3}</div>
             )}
           </div>
-          {/* <p className="pokemonInfos">{props.type1}</p>
-          {props.type2 && <p className="pokemonInfos">{props.type2}</p>}
-          {props.type3 && <p className="pokemonInfos">{props.type3}</p>} */}
         </div>
       </div>
       {props.typeButton === "addButton" ? (
