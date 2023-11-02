@@ -1,0 +1,42 @@
+.home {
+    display:  grid;
+    grid-template-columns: repeat(5, 1fr);
+    // grid-template-rows: repeat(auto, 1fr);
+    grid-auto-rows: 1fr;
+    padding: 2vw;
+    background-color: var(--light-grey);
+    gap: 1vw;
+
+    .search {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        grid-column: 1 / 6;
+        padding: var(--padding);
+        background-color: var(--white);
+        border-radius: 1vw;
+
+        input {
+            width: 100%;
+            height: 3vw;
+            padding: 0 1vw;
+            border: 0.2vw solid var(--light-grey);
+            border-radius: 0.4vw;
+            font-size: 1.2vw;
+        }
+    }
+
+    .card {
+        height: 30vw;
+        background-color: var(--white);
+        padding: var(--padding);
+        border-radius: 1vw;
+        border: 2px solid transparent;
+
+        transition: all 0.3s ease-in-out;
+
+        &:hover {
+            border-color: var(--dark-grey);
+        }
+    }
+}
