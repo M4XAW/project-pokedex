@@ -3,14 +3,13 @@ import { useEffect, useState } from "react";
 import "./home.scss";
 
 import Card from "../../Components/Card/card";
-import Pokeball from "../../Assets/Images/pokéball.png";
 
 export default function Home() {
   const [pokemon, setPokemon] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
 
   useEffect(() => { // fetch data from API
-    fetch("https://pokeapi.co/api/v2/pokemon?limit=1051", {
+    fetch("https://pokeapi.co/api/v2/pokemon?limit=151", {
       method: "GET",
     })
       .then((response) => response.json())
@@ -53,8 +52,6 @@ export default function Home() {
             key={index}
             id={pokemon.id}
             name={pokemon.name}
-            height={pokemon.height}
-            weight={pokemon.weight}
             type1={pokemon.types[0].type.name}
             type2={pokemon.types[1] && pokemon.types[1].type.name}
             type3={pokemon.types[2] && pokemon.types[2].type.name}
@@ -68,8 +65,6 @@ export default function Home() {
               key={index}
               id={pokemon.id}
               name={pokemon.name}
-              height={pokemon.height}
-              weight={pokemon.weight}
               type1={pokemon.types[0].type.name}
               type2={pokemon.types[1] && pokemon.types[1].type.name}
               type3={pokemon.types[2] && pokemon.types[2].type.name}

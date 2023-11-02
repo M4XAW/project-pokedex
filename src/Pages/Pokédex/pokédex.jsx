@@ -4,11 +4,14 @@ import "./pokédex.scss";
 import Card from "../../Components/Card/card";
 import Pokeball from "../../Assets/Images/pokéball.png";
 
+import Popup from "../../Components/PopUp/popup";
+
 export default function Pokédex() {
   const [pokemonList, setPokemonList] = useState([]);
   const [filterId] = useState("");
   const [filterName] = useState("");
   const [sortBy, setSortBy] = useState(null);
+  const [showPopup, setShowPopup] = useState(false);
 
   useEffect(() => {
     const storedData = Object.values(localStorage) // get all the values from the local storage
@@ -55,6 +58,7 @@ export default function Pokédex() {
 
   return (
     <div className="pokédex">
+      {/* <Popup onClose={() => setShowPopup(false)} /> */}
       <div className="container">
         <div className="title">
           <img src={Pokeball} alt="pokeball" />
@@ -80,13 +84,16 @@ export default function Pokédex() {
         <div className="cards">
           {filteredPokemonList.map((pokemon, index) => (
             <Card
+              typeButton="removeButton"
               key={index}
               id={pokemon.id}
               name={pokemon.name}
               type1={pokemon.type1}
               type2={pokemon.type2}
               type3={pokemon.type3}
+              onClick={() => setShowPopup(true)}
             />
+            // { showPopup && <Popup onClose={() => setShowPopup(false)} />
           ))}
         </div>
       )}

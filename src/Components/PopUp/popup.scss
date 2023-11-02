@@ -1,0 +1,64 @@
+.popUp {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    height: 8vw;
+    width: 20vw;
+    background-color: var(--white);
+    border-radius: var(--border-radius-04);
+    border: var(--border) solid var(--dark-grey);
+    padding: 1vw;
+    z-index: 2;
+
+    h2 {
+        font-size: 1vw;
+        font-weight: 500;
+        text-align: center;
+    }
+
+    .choice {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 100%;
+        gap: 25%;
+
+        button {
+            height: 2vw;
+            width: 10vw;
+            color: var(--white);
+            border-radius: var(--border-radius-04);
+            border: var(--border) solid var(--dark-grey);
+            cursor: pointer;
+            transition: all 0.3s ease;
+
+            &:hover {
+                background-color: var(--light-grey);
+                border: var(--border) solid var(--dark-grey);
+            }
+        }
+
+        .cancel {
+            background-color: var(--red);
+            border: var(--border) solid var(--border-red);
+
+            &:hover {
+                background-color: var(--border-red);
+            }
+        }
+
+        .confirm {
+            background-color: var(--green);
+            border: var(--border) solid var(--border-green);
+
+            &:hover {
+                background-color: var(--border-green);
+            }
+        }
+    }
+}

@@ -171,13 +171,13 @@
 
   .addButton:hover {
     color: var(--white);
-    background-color: #46d671;
-    border-color: #38af5c;
+    background-color: var(--green);
+    border-color: var(--border-green);
   }
 
   .removeButton:hover {
     color: var(--white);
-    background-color: #ff3f3f;
-    border-color: #d12f2f;
+    background-color: var(--red);
+    border-color: var(--border-red);
   }
 }
