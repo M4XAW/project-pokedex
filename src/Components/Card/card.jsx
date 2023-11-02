@@ -2,6 +2,7 @@ import React from "react";
 import "./card.scss";
 
 export default function Card(props) {
+  const ls = localStorage;
   const addToLocalStorage = (pokemonData) => {
     const pokemonId = pokemonData.id;
     const isPokemonAlreadyAdded = localStorage.getItem(`${pokemonId}`);
@@ -12,6 +13,12 @@ export default function Card(props) {
     } else {
       alert("Ce Pokémon est déjà dans votre liste.");
     }
+  };
+
+  const removeToLocalStorage = (pokemonId) => {
+    localStorage.removeItem(`${pokemonId}`);
+    alert("Pokémon supprimé avec succès !");
+    window.location.reload();
   };
 
   return (
@@ -31,9 +38,13 @@ export default function Card(props) {
           {props.type3 && <p>{props.type3}</p>}
         </div>
       </div>
-      <button className="addButton" onClick={() => addToLocalStorage(props)}>
-        Ajouter
-      </button>
+      {props.typeButton === "addButton" ? (
+        <button onClick={() => addToLocalStorage(props)}>Ajouter</button>
+      ) : (
+        <button onClick={() => removeToLocalStorage(props.id)}>
+          Supprimer
+        </button>
+      )}
     </div>
   );
 }

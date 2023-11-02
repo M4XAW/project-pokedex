@@ -25,8 +25,11 @@ export default function Pokédex() {
     <div className="pokedex">
       <h2>Liste de mes Pokémons</h2>
       <div className="cards">
+        {!pokemonList.length && <p>Aucun Pokémon dans votre liste</p>}
+
       {pokemonList.map((pokemon, index) => (
         <Card
+          typeButton = "removeButton"
           key={index}
           id={pokemon.id}
           name={pokemon.name}

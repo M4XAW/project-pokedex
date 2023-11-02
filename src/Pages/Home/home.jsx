@@ -34,6 +34,7 @@ export default function Home() {
 
   return (
     <main className="home">
+      <h2>Tous les Pokémons</h2>
       <input
         type="text"
         placeholder="Rechercher"
@@ -45,6 +46,7 @@ export default function Home() {
 
         {filteredPokemon.map((pokemon, index) => (
           <Card
+            typeButton = "addButton"
             key={index}
             id={pokemon.id}
             name={pokemon.name}
@@ -59,6 +61,7 @@ export default function Home() {
         {!searchTerm &&
           pokemon.map((pokemon, index) => (
             <Card
+              typeButton = "addButton"
               key={index}
               id={pokemon.id}
               name={pokemon.name}

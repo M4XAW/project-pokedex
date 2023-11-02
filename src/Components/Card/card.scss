@@ -1,5 +1,5 @@
 .card {
-    position: relative;
+  position: relative;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -26,7 +26,7 @@
     transition: transform 0.3s ease;
   }
 
-  .addButton {
+  button {
     width: 100%;
     height: 2.6vw;
     background-color: var(--light-grey);
