@@ -16,6 +16,10 @@ export default function Pokédex() {
 
   const [searchTerm, setSearchTerm] = useState("");
 
+  useEffect(() => { // Change the title of the page
+    document.title = "Mon Pokédex";
+  });
+
   useEffect(() => {
     const storedData = Object.values(localStorage) // get all the values from the local storage
       .map((item) => {
@@ -82,11 +86,11 @@ export default function Pokédex() {
         <div className="buttons">
           <button onClick={sortPokemonById}>Trier par ID</button>
           <button onClick={sortPokemonByName}>Trier par nom</button>
-          <button onClick={removeAllPokemon}>x</button>
+          <button className="removeAllButton" onClick={removeAllPokemon}></button>
           <div>
             <input
               type="text"
-              placeholder="Filtrer par nom"
+              placeholder='Rechercher'
               value={filterName}
               onChange={(e) => setFilterName(e.target.value)}
             />
@@ -112,6 +116,7 @@ export default function Pokédex() {
             key={index}
             id={pokemon.id}
             name={pokemon.name}
+            img = {pokemon.img}
             type1={pokemon.type1}
             type2={pokemon.type2}
             type3={pokemon.type3}

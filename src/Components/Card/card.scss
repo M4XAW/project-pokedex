@@ -12,7 +12,7 @@
 
   &:hover {
     img {
-      transform: scale(1.1);
+      transform: translateY(-0.5vw);
     }
   }
 
@@ -34,9 +34,21 @@
 
   .cardContent {
     .pokemonImage {
-      width: 80%;
+      display: flex;
+      // justify-content: center;
+      align-items: center;
+      height: 60%;
+      aspect-ratio: 1/1;
       user-select: none;
+      padding: 1vw;
       transition: transform 0.3s ease;
+
+      img {
+        height: 100%;
+        width: 100%;
+        object-fit: contain;
+        transition: all 0.3s ease;
+      }
     }
 
     .cardInfos {
@@ -151,6 +163,11 @@
         .dragon {
           background-color: #7038f8;
           border-color: #5c2e9b;
+        }
+
+        .dark {
+          background-color: #705848;
+          border-color: #554032;
         }
       }
     }

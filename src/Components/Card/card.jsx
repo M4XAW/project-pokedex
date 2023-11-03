@@ -6,7 +6,9 @@ import Popup from "../PopUp/popup";
 
 export default function Card(props) {
   const ls = localStorage;
-  const [isPokemonAdded, setIsPokemonAdded] = useState(ls.getItem(`${props.id}`));
+  const [isPokemonAdded, setIsPokemonAdded] = useState(
+    ls.getItem(`${props.id}`)
+  );
   const [showPopup, setShowPopup] = useState(false);
 
   const addToLocalStorage = (pokemonData) => {
@@ -19,21 +21,19 @@ export default function Card(props) {
     }
   };
 
-  const removeToLocalStorage = (pokemonId) => {    
+  const removeToLocalStorage = (pokemonId) => {
     ls.removeItem(`${pokemonId}`);
     setIsPokemonAdded(false);
     window.location.reload();
-  }
+  };
 
   return (
     <div key={props.index} className="card">
       <p className="number">{props.id}</p>
       <div className="cardContent">
-        <img
-          className="pokemonImage"
-          src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${props.id}.png`}
-          alt={props.name}
-        />
+        <div className="pokemonImage">
+          <img src={props.img} alt={props.name} />
+        </div>
         <div className="cardInfos">
           <h2 className="pokemonName">{props.name}</h2>
           <div className="types">
@@ -49,10 +49,13 @@ export default function Card(props) {
       </div>
       {props.typeButton === "addButton" ? (
         <button className="addButton" onClick={() => addToLocalStorage(props)}>
-          {isPokemonAdded ? '✔️' : 'Ajouter +'}
+          {isPokemonAdded ? "✔️" : "Ajouter +"}
         </button>
       ) : (
-        <button className="removeButton" onClick={() => removeToLocalStorage(props.id)}>
+        <button
+          className="removeButton"
+          onClick={() => removeToLocalStorage(props.id)}
+        >
           Supprimer
         </button>
       )}

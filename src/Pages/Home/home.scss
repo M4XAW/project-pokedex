@@ -29,4 +29,25 @@
       }
     }
   }
+
+  .buttonsPages {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1vw;
+
+    button {
+      width: 15%;
+      height: 2.6vw;
+      font-size: 0.8vw;
+      font-weight: 500;
+      background-color: var(--white);
+      border: var(--border) solid var(--dark-grey);
+      border-radius: var(--border-radius-04);
+      cursor: pointer;
+      user-select: none;
+      margin-top: 1vw;
+      transition: all 0.3s ease;
+    }
+  }
 }

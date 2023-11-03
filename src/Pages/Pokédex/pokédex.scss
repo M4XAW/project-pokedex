@@ -38,11 +38,28 @@
                 padding: 0.5vw 1vw;
                 border-radius: 0.3vw;
                 border: var(--border) solid var(--dark-grey);
+                cursor: pointer;
                 transition: all 0.3s ease;
 
                 &:hover {
                     background-color: var(--light-grey);
                     border: var(--border) solid var(--dark-grey);
+                }
+            }
+
+            .removeAllButton {
+                background-color: var(--red);
+                border: var(--border) solid var(--border-red);
+                background-image: url('/Assets/Icons/trash.svg');
+                background-repeat: no-repeat;
+                background-position: center;
+                background-size: 1.2vw;
+                height: 100%;
+                aspect-ratio: 1/1;
+
+                &:hover {
+                    background-color: #ff0000;
+                    border: var(--border) solid var(--border-red);
                 }
             }
 

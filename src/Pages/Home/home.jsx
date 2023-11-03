@@ -7,10 +7,33 @@ import Card from "../../Components/Card/card";
 export default function Home() {
   const [pokemon, setPokemon] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
+  const [offset, setOffset] = useState(0);
+  const limit = 30;
+
+  const loadPokemon = (newOffset) => {
+    setOffset(newOffset);
+  };
+
+  const loadNextPage = () => {
+    if (pokemon.length === limit) {
+      const newOffset = offset + limit;
+      loadPokemon(newOffset);
+    }
+  };
+
+  const loadPreviousPage = () => {
+    const newOffset = Math.max(0, offset - limit);
+    loadPokemon(newOffset);
+  };
+
+  useEffect(() => {
+    // Change the title of the page
+    document.title = "Tous les Pokémons";
+  });
 
   useEffect(() => {
     // fetch data from API
-    fetch("https://pokeapi.co/api/v2/pokemon?limit=151", {
+    fetch(`https://pokeapi.co/api/v2/pokemon?limit=${limit}&offset=${offset}`, {
       method: "GET",
     })
       .then((response) => response.json())
@@ -24,13 +47,14 @@ export default function Home() {
           .then((pokemonData) => setPokemon(pokemonData))
           .catch((error) => console.error("Error:", error)); // If there is an error, log it
       });
-  }, []);
+  }, [offset, limit]);
 
   const filteredPokemon = pokemon.filter((pokemon) =>
     pokemon.name.toLowerCase().includes(searchTerm.toLowerCase())
   );
 
-  const handleSearchChange = (event) => { // Handle the search input
+  const handleSearchChange = (event) => {
+    // Handle the search input
     setSearchTerm(event.target.value); // set the search term
   };
 
@@ -54,11 +78,16 @@ export default function Home() {
             key={index}
             id={pokemon.id}
             name={pokemon.name}
+            img={pokemon.sprites.other.dream_world.front_default}
             type1={pokemon.types[0].type.name}
             type2={pokemon.types[1] && pokemon.types[1].type.name}
             type3={pokemon.types[2] && pokemon.types[2].type.name}
           />
         ))}
+      </div>
+      <div className="buttonsPages">
+        <button onClick={loadPreviousPage}>Précédent</button>
+        <button onClick={loadNextPage}>Suivant</button>
       </div>
     </main>
   );
