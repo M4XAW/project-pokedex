@@ -1,0 +1,16 @@
+.error {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  padding: 2vw;
+  min-height: 90vh;
+
+  h2 {
+    font-size: 1.8vw;
+  }
+
+  p {
+    font-size: 0.9vw;
+  }
+}

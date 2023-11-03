@@ -16,7 +16,7 @@ export default function Header() {
             <Link to="/">Liste pokémon</Link>
           </li>
           <li>
-            <Link to="/pokédex">Mon pokédex</Link>
+            <Link to="/pokédex">Mon pokédex</Link> 
           </li>
         </ul>
       </nav>

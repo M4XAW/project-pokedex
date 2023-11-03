@@ -10,18 +10,18 @@ export default function Home() {
   const [offset, setOffset] = useState(0);
   const limit = 30;
 
-  const loadPokemon = (newOffset) => {
+  const loadPokemon = (newOffset) => { // load the pokemon
     setOffset(newOffset);
   };
 
-  const loadNextPage = () => {
+  const loadNextPage = () => { // load the pokemon of the next page
     if (pokemon.length === limit) {
       const newOffset = offset + limit;
       loadPokemon(newOffset);
     }
   };
 
-  const loadPreviousPage = () => {
+  const loadPreviousPage = () => { // load the pokemon of the previous page
     const newOffset = Math.max(0, offset - limit);
     loadPokemon(newOffset);
   };
@@ -33,12 +33,12 @@ export default function Home() {
 
   useEffect(() => {
     // fetch data from API
-    fetch(`https://pokeapi.co/api/v2/pokemon?limit=${limit}&offset=${offset}`, {
+    fetch(`https://pokeapi.co/api/v2/pokemon?limit=${limit}&offset=${offset}`, { // Request to the API
       method: "GET",
     })
-      .then((response) => response.json())
+      .then((response) => response.json()) // parse the data
       .then((data) => {
-        const promises = data.results.map((pokemon) => fetch(pokemon.url));
+        const promises = data.results.map((pokemon) => fetch(pokemon.url)); // get the url of each pokemon
         Promise.all(promises) // fetch all the data
           .then(
             (responses) =>
@@ -70,9 +70,9 @@ export default function Home() {
         />
       </div>
       <div className="cards">
-        {filteredPokemon.length === 0 && searchTerm && <p>Aucun résultat</p>}
+        {filteredPokemon.length === 0 && searchTerm && <p>Aucun résultat</p>} {/* if there is no result, display a message */}
 
-        {filteredPokemon.map((pokemon, index) => (
+        {filteredPokemon.map((pokemon, index) => ( // display all the pokemons
           <Card
             typeButton="addButton"
             key={index}
@@ -86,8 +86,8 @@ export default function Home() {
         ))}
       </div>
       <div className="buttonsPages">
-        <button onClick={loadPreviousPage}>Précédent</button>
-        <button onClick={loadNextPage}>Suivant</button>
+        <button onClick={loadPreviousPage}>Précédent</button> {/* load the previous page */}
+        <button onClick={loadNextPage}>Suivant</button> {/* load the next page */}
       </div>
     </main>
   );

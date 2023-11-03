@@ -4,6 +4,7 @@ import { Routes, Route } from "react-router-dom";
 import Header from "./Components/Header/header";
 import Home from "./Pages/Home/home";
 import Pokédex from './Pages/Pokédex/pokédex';
+import Error from './Pages/Error/error';
 
 function App() {
   return (
@@ -12,7 +13,8 @@ function App() {
       <Routes>
         <Route path='/' element={<Home />} />
         <Route path='/pokédex' element={<Pokédex/>}/>
-      </Routes>
+        <Route path='*' element={<Error />} /> {/* If the path is not found, display the error page */}
+      </Routes> 
     </div>
   );
 }
