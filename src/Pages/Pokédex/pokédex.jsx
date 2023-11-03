@@ -8,19 +8,18 @@ import Popup from "../../Components/PopUp/popup";
 import SearchBar from "../../Components/SearchBar/searchBar";
 
 export default function Pokédex() {
-  const [pokemonList, setPokemonList] = useState([]);
-  const [filterId] = useState("");
-  const [filterName, setFilterName] = useState("");
-  const [sortBy, setSortBy] = useState(null);
-  const [showPopup, setShowPopup] = useState(false);
-
-  const [searchTerm, setSearchTerm] = useState("");
+  const [pokemonList, setPokemonList] = useState([]);// Initialize state for the list of Pokémon
+  const [filterId] = useState("");//Initialize state for filtering by Pokémon ID
+  const [filterName, setFilterName] = useState(""); // Initialize state for filtering by Pokémon name
+  const [sortBy, setSortBy] = useState(null);// Initialize state for sorting criteria
+  const [showPopup, setShowPopup] = useState(false);// Initialize state for displaying a popup
+  const [searchTerm, setSearchTerm] = useState("");// Initialize state for the search term
 
   useEffect(() => { // Change the title of the page
     document.title = "Mon Pokédex";
   });
 
-  useEffect(() => {
+  useEffect(() => {// Load Pokémon data from local storage
     const storedData = Object.values(localStorage) // get all the values from the local storage
       .map((item) => {
         try {
@@ -35,25 +34,25 @@ export default function Pokédex() {
   }, []);
 
   const removeAllPokemon = () => {
-    localStorage.clear();
-    setPokemonList([]);
+    localStorage.clear();// Remove all Pokémon data from local storage
+    setPokemonList([]); // Clear the Pokémon list state
   };
 
   const sortPokemonById = () => {
     const sortedList = [...pokemonList].sort((a, b) => a.id - b.id);
-    setPokemonList(sortedList);
-    setSortBy("id");
+    setPokemonList(sortedList);// Update the state with the sorted list
+    setSortBy("id");// Set the sorting criteria to 'id'
   };
 
   const sortPokemonByName = () => {
     const sortedList = [...pokemonList].sort((a, b) =>
       a.name.localeCompare(b.name)
-    );
-    setPokemonList(sortedList);
-    setSortBy("name");
+    );// Sort the Pokémon list by name
+    setPokemonList(sortedList);// Update the state with the sorted list
+    setSortBy("name");// Set the sorting criteria to 'name'
   };
 
-  useEffect(() => {
+  useEffect(() => {// Apply sorting when 'sortBy' state changes
     if (sortBy === "id") {
       sortPokemonById();
     } else if (sortBy === "name") {
@@ -63,10 +62,10 @@ export default function Pokédex() {
 
   const filteredPokemonList = pokemonList.filter((pokemon) => {
     return (
-      (!filterId || pokemon.id.includes(filterId)) &&
+      (!filterId || pokemon.id.includes(filterId)) &&// Filter by ID 
       (!filterName ||
         pokemon.name.toLowerCase().includes(filterName.toLowerCase()))
-    );
+    ); // Filter by name
   });
 
   const handleSearchChange = (event) => {

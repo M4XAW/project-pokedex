@@ -1,30 +1,31 @@
 import React from "react";
-import { useState } from "react";
+import { useState } from "react"; // Import necessary dependencies
 import "./card.scss";
 
 import Popup from "../PopUp/popup";
 
 export default function Card(props) {
-  const ls = localStorage;
+  const ls = localStorage;// Create a reference to the local storage
   const [isPokemonAdded, setIsPokemonAdded] = useState(
     ls.getItem(`${props.id}`)
   );
   const [showPopup, setShowPopup] = useState(false);
 
+  // Function to add a Pokémon to local storage
   const addToLocalStorage = (pokemonData) => {
     const pokemonId = pokemonData.id;
     const isPokemonAlreadyAdded = ls.getItem(`${pokemonId}`);
 
-    if (!isPokemonAlreadyAdded) {
-      ls.setItem(`${pokemonId}`, JSON.stringify(pokemonData));
-      setIsPokemonAdded(true);
+    if (!isPokemonAlreadyAdded) {// If the Pokémon is not already adde
+      ls.setItem(`${pokemonId}`, JSON.stringify(pokemonData));// Store the Pokémon data in local storage
+      setIsPokemonAdded(true);// Update the state to indicate it's added
     }
   };
-
+  // Function to remove a Pokémon from local storage
   const removeToLocalStorage = (pokemonId) => {
-    ls.removeItem(`${pokemonId}`);
-    setIsPokemonAdded(false);
-    window.location.reload();
+    ls.removeItem(`${pokemonId}`);// Remove the Pokémon data from local storage
+    setIsPokemonAdded(false);// Update the state to indicate it's removed
+    window.location.reload();// Reload the page
   };
 
   return (
