@@ -1,27 +1,30 @@
 import React from "react";
-import { useEffect, useState } from "react";
-import "./home.scss";
+import { useEffect, useState } from "react";// Import necessary dependencies
+import "./home.scss";// Import the styles for the home component
 
 import Card from "../../Components/Card/card";
 
 export default function Home() {
-  const [pokemon, setPokemon] = useState([]);
-  const [searchTerm, setSearchTerm] = useState("");
+  const [pokemon, setPokemon] = useState([]);// Initialize state for storing Pokémon data
+  const [searchTerm, setSearchTerm] = useState("");// Initialize state for the search term
   const [offset, setOffset] = useState(0);
   const limit = 30;
 
-  const loadPokemon = (newOffset) => { // load the pokemon
+  // Function to load Pokémon data with a new offset
+  const loadPokemon = (newOffset) => {
     setOffset(newOffset);
   };
 
-  const loadNextPage = () => { // load the pokemon of the next page
+  // Function to load the next page of Pokémon
+  const loadNextPage = () => {
     if (pokemon.length === limit) {
       const newOffset = offset + limit;
       loadPokemon(newOffset);
     }
   };
-
-  const loadPreviousPage = () => { // load the pokemon of the previous page
+  
+  // Function to load the previous page of Pokémo
+  const loadPreviousPage = () => {
     const newOffset = Math.max(0, offset - limit);
     loadPokemon(newOffset);
   };
