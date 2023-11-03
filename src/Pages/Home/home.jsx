@@ -8,7 +8,8 @@ export default function Home() {
   const [pokemon, setPokemon] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
 
-  useEffect(() => { // fetch data from API
+  useEffect(() => {
+    // fetch data from API
     fetch("https://pokeapi.co/api/v2/pokemon?limit=151", {
       method: "GET",
     })
@@ -16,11 +17,12 @@ export default function Home() {
       .then((data) => {
         const promises = data.results.map((pokemon) => fetch(pokemon.url));
         Promise.all(promises) // fetch all the data
-          .then((responses) =>
-            Promise.all(responses.map((response) => response.json())) // parse all the data
+          .then(
+            (responses) =>
+              Promise.all(responses.map((response) => response.json())) // parse all the data
           )
           .then((pokemonData) => setPokemon(pokemonData))
-          .catch((error) => console.error("Error:", error));
+          .catch((error) => console.error("Error:", error)); // If there is an error, log it
       });
   }, []);
 
@@ -28,8 +30,8 @@ export default function Home() {
     pokemon.name.toLowerCase().includes(searchTerm.toLowerCase())
   );
 
-  const handleSearchChange = (event) => { // Modify the state of the search bar
-    setSearchTerm(event.target.value);
+  const handleSearchChange = (event) => { // Handle the search input
+    setSearchTerm(event.target.value); // set the search term
   };
 
   return (
@@ -44,7 +46,7 @@ export default function Home() {
         />
       </div>
       <div className="cards">
-        {searchTerm && !filteredPokemon.length && <p>Aucun résultat</p>}
+        {filteredPokemon.length === 0 && searchTerm && <p>Aucun résultat</p>}
 
         {filteredPokemon.map((pokemon, index) => (
           <Card
@@ -57,19 +59,6 @@ export default function Home() {
             type3={pokemon.types[2] && pokemon.types[2].type.name}
           />
         ))}
-
-        {!searchTerm &&
-          pokemon.map((pokemon, index) => (
-            <Card
-              typeButton="addButton"
-              key={index}
-              id={pokemon.id}
-              name={pokemon.name}
-              type1={pokemon.types[0].type.name}
-              type2={pokemon.types[1] && pokemon.types[1].type.name}
-              type3={pokemon.types[2] && pokemon.types[2].type.name}
-            />
-          ))}
       </div>
     </main>
   );

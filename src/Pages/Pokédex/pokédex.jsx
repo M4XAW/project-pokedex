@@ -26,6 +26,11 @@ export default function Pokédex() {
     setPokemonList(storedData); // set the state of the pokemon list
   }, []);
 
+  const removeAllPokemon = () => {
+    localStorage.clear();
+    setPokemonList([]);
+  };
+
   const sortPokemonById = () => {
     const sortedList = [...pokemonList].sort((a, b) => a.id - b.id);
     setPokemonList(sortedList);
@@ -68,7 +73,7 @@ export default function Pokédex() {
         <div className="buttons">
           <button onClick={sortPokemonById}>Trier par ID</button>
           <button onClick={sortPokemonByName}>Trier par nom</button>
-          <button onClick={sortPokemonByName}>Trier par type</button>
+          <button onClick={removeAllPokemon}>x</button>
           <input
             type="text"
             placeholder="Rechercher"
