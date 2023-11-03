@@ -9,7 +9,7 @@ import Popup from "../../Components/PopUp/popup";
 export default function Pokédex() {
   const [pokemonList, setPokemonList] = useState([]);
   const [filterId] = useState("");
-  const [filterName] = useState("");
+  const [filterName, setFilterName] = useState("");
   const [sortBy, setSortBy] = useState(null);
   const [showPopup, setShowPopup] = useState(false);
 
@@ -53,11 +53,11 @@ export default function Pokédex() {
     }
   }, [sortBy]);
 
+  
   const filteredPokemonList = pokemonList.filter((pokemon) => {
     return (
       (!filterId || pokemon.id.includes(filterId)) &&
-      (!filterName ||
-        pokemon.name.toLowerCase().includes(filterName.toLowerCase()))
+      (!filterName || pokemon.name.toLowerCase().includes(filterName.toLowerCase()))
     );
   });
 
@@ -74,12 +74,14 @@ export default function Pokédex() {
           <button onClick={sortPokemonById}>Trier par ID</button>
           <button onClick={sortPokemonByName}>Trier par nom</button>
           <button onClick={removeAllPokemon}>x</button>
+          <div>
           <input
             type="text"
-            placeholder="Rechercher"
-          // value={"ezr"}
-          // onChange={"ezr"}
+            placeholder="Filtrer par nom"
+            value={filterName}
+            onChange={(e) => setFilterName(e.target.value)}
           />
+        </div>
         </div>
       </div>
       {pokemonList.length === 0 ? (
