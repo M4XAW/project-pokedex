@@ -10,7 +10,7 @@ import SearchBar from "../../Components/SearchBar/searchBar";
 export default function Pokédex() {
   const [pokemonList, setPokemonList] = useState([]);
   const [filterId] = useState("");
-  const [filterName] = useState("");
+  const [filterName, setFilterName] = useState("");
   const [sortBy, setSortBy] = useState(null);
   const [showPopup, setShowPopup] = useState(false);
 
@@ -83,12 +83,14 @@ export default function Pokédex() {
           <button onClick={sortPokemonById}>Trier par ID</button>
           <button onClick={sortPokemonByName}>Trier par nom</button>
           <button onClick={removeAllPokemon}>x</button>
-          <input
-            type="text"
-            placeholder="Rechercher"
-            value={searchTerm}
-            onChange={handleSearchChange}
-          />
+          <div>
+            <input
+              type="text"
+              placeholder="Filtrer par nom"
+              value={filterName}
+              onChange={(e) => setFilterName(e.target.value)}
+            />
+          </div>
         </div>
       </div>
       {pokemonList.length === 0 && (
@@ -97,7 +99,7 @@ export default function Pokédex() {
         </div>
       )}
 
-      {filteredPokemonList.length === 0 && searchTerm && (
+      {filteredPokemonList.length === 0 && !searchTerm && (
         <div className="empty">
           <p>Aucun résultat</p>
         </div>
@@ -117,28 +119,6 @@ export default function Pokédex() {
           />
         ))}
       </div>
-
-      {/* {pokemonList.length === 0 ? (
-        <div className="empty">
-          <p>Votre pokédex est vide.</p>
-        </div>
-      ) : (
-        <div className="cards">
-          {filteredPokemonList.map((pokemon, index) => (
-            <Card
-              typeButton="removeButton"
-              key={index}
-              id={pokemon.id}
-              name={pokemon.name}
-              type1={pokemon.type1}
-              type2={pokemon.type2}
-              type3={pokemon.type3}
-              onClick={() => setShowPopup(true)}
-            />
-            // { showPopup && <Popup onClose={() => setShowPopup(false)} />
-          ))}
-        </div>
-      )} */}
     </div>
   );
 }
